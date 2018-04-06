@@ -18,15 +18,17 @@
  * You should have received a copy of the Apache License
  * along with this program.  If not, see <http://www.apache.org/licenses/>
  */
-body > div { padding-top: 10px; }
+/*body > div { padding-top: 10px; }
 body > div#navbar { padding-top: 0px; }
 
+*/
 body {
       background-image: url(../img/background-blue.jpeg);
       background-size: cover;
   
 }
 
+/* nav { background-color: white;}
 #navbar + div { padding-top: 50px; }
 #navbar + iframe { padding-top: 50px; }
 
@@ -39,7 +41,7 @@ body {
     #navbar + div { padding-top: 200px; }
     #navbar + iframe { padding-top: 200px; }
 }
-
+*/
 #applist {
 	margin-top: 10px;
 }
@@ -55,7 +57,11 @@ body {
 #error {
 	padding-left: 15px;
 }
-
+/* .media-body a{
+  color:white;
+  font-size: 30px;
+}
+*/
 .loading {
 	display: none;
 	position: fixed;
@@ -67,6 +73,7 @@ body {
 
 .loading-txt {
 	text-align: center;
+	color:white;
 	font-size: 24px;
 	margin-top: -50px;
 }

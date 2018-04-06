@@ -26,15 +26,23 @@
 <head lang="en">
 	<title>Error</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<link rel="stylesheet" media="screen" th:href="@{/webjars/bootstrap/3.3.6/css/bootstrap.min.css}"/>
+	<link rel="stylesheet" media="screen" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/> 
 	<link rel="stylesheet" media="screen" th:href="@{/css/default.css}"/>
-	<script th:src="@{/webjars/jquery/2.2.2/jquery.min.js}"></script>
-	<script th:src="@{/webjars/bootstrap/3.3.6/js/bootstrap.min.js}"></script>
+	 <link rel="stylesheet" href="../dist/css/AdminLTE.min.css"
+          th:href="@{/webjars/AdminLTE/2.4.3/dist/css/AdminLTE.min.css}" />
+    <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css"
+          th:href="@{/webjars/AdminLTE/2.4.3/dist/css/skins/_all-skins.min.css}" />
+	<script th:src="@{/webjars/jquery/3.3.1/jquery.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+ 
 </head>
-<body>
+<body class="skin-bluelight layout-top-nav" style="height: auto; min-height: 100%;">  
+ <div class ="wrapper" style="height: auto; min-height: 100%;"> 
 	<!-- navigation bar -->
-	<div th:replace="../fragments/navbar :: navbar"></div>
-	
+	<header class="main-header">
+	  <div th:replace="../fragments/navbar :: navbar"></div>
+	</header>
+	<!-- content -->
 	<!-- content -->
 	<div id="error">
 		<h1>Error</h1>
@@ -48,5 +56,7 @@
 			<b>Stack Trace:</b> <br/><span th:utext="${stackTrace}"></span>
 		</p>
 	</div>
+	</div>
 </body>
 </html>
+

@@ -26,14 +26,22 @@
 <head lang="en">
 	<title th:text="${title}"></title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<link rel="stylesheet" media="screen" th:href="@{/webjars/bootstrap/3.3.6/css/bootstrap.min.css}"/>
+	<link rel="stylesheet" media="screen" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
 	<link rel="stylesheet" media="screen" th:href="@{/css/default.css}"/>
+	  <link rel="stylesheet" href="../dist/css/AdminLTE.min.css"
+          th:href="@{/webjars/AdminLTE/2.4.3/dist/css/AdminLTE.min.css}" />
+    <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css"
+          th:href="@{/webjars/AdminLTE/2.4.3/dist/css/skins/_all-skins.min.css}" />
 	<script th:src="@{/webjars/jquery/2.2.2/jquery.min.js}"></script>
-	<script th:src="@{/webjars/bootstrap/3.3.6/js/bootstrap.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
 </head>
-<body>
-	<!-- navigation bar -->
-	<div th:replace="../fragments/navbar :: navbar"></div>
+<!-- <body class="layout-top-nav" th:classappend="${skin}" style="height: auto; min-height: 100%;">  -->
+<body class="layout-boxed" th:classappend="${skin}" > 
+ <div class ="wrapper" style="height: auto; min-height: 100%;"> 
+<!-- navigation bar -->
+<header class="main-header">
+	  <div th:replace="../fragments/navbar :: navbar"></div>
+	</header>
 	
 	<!-- content -->
     <iframe id="shinyframe" th:src="${container}" width="100%"></iframe>
@@ -70,5 +78,7 @@
 			}
 		});
 	</script>
+</div>
+<!--wrapper -->
 </body>
 </html>

@@ -26,9 +26,10 @@
 <head lang="en">
 	<title th:text="${title}"></title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<link rel="stylesheet" media="screen" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
+  <link rel="stylesheet" media="screen" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/> 
 	<link rel="stylesheet" media="screen" th:href="@{/css/default.css}"/>
-	 <link rel="stylesheet" href="../dist/css/AdminLTE.min.css"
+	    <!-- Theme style -->
+    <link rel="stylesheet" href="../dist/css/AdminLTE.min.css"
           th:href="@{/webjars/AdminLTE/2.4.3/dist/css/AdminLTE.min.css}" />
     <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css"
           th:href="@{/webjars/AdminLTE/2.4.3/dist/css/skins/_all-skins.min.css}" />
@@ -42,38 +43,45 @@
 	  <div th:replace="../fragments/navbar :: navbar"></div>
 	</header>
 	<!-- content -->
-	<!-- content -->
 	<div class="container">
-	<div class="content-wrapper container-fluid" style="min-height:960px"> 
+	  
+	<div class="content-wrapper container-fluid" style="min-height:600px"> 
 	  
 	<!-- Page Header --> 
 	<section class="content-header">  
-	 <h1>Users that are signed in an have sessions <small>HIT Future is working for you</small></h1>
+	 <h1>Your Application Navigation! <small>HIT Future is working for you</small></h1>
 	</section>
 		<section class="content">  
 
-    <div id="admin">
-    	<h3>Container Activity</h3>
-    	<table border="1">
-    		<tr>
-    			<th>Name</th>
-    			<th>User</th>
-    			<th>Appname</th>
-    			<th>Target URL</th>
-    			<th>Uptime</th>
-    		</tr>
-    		<tr th:each="proxy: ${proxies}" style="color:white;">
-    			<td th:text="${proxy.name}"></td>
-    			<td th:text="${proxy.userId}"></td>
-    			<td th:text="${proxy.app.name}"></td>
-    			<td th:text="${proxy.target}"></td>
-    			<td th:text="${proxy.uptime}"></td>
-    		</tr>
-    	</table>
-    </div>
-    </section>
-    </div>
-    </div>
-    </div>
+	<div th:if="${!displayAppLogos}" class="btn-group btn-group-justified" role="group" aria-label="..." id="applist">
+		<ul>
+			<li th:each="app: ${apps}">
+				<a th:href="@{/app/}+${app.name}" th:text="${app.displayName == null} ? ${app.name} : ${app.displayName}"></a>
+				<br th:if="${app.description != null}" />
+				<span th:if="${app.description != null}" th:utext="${app.description}"></span>
+			</li>
+		</ul>
+	</div>
+    
+    <div th:if="${displayAppLogos}" class="btn-group btn-group-justified" role="group" aria-label="..." id="applist">
+		<div class="row" style="margin-top:20px;" th:each="app: ${apps}">
+			<div class="col-md-6 col-md-offset-3">
+				<div class="media">
+					<div class="media-left">
+						<img th:if="${appLogos.get(app) != null}" th:src="${appLogos.get(app)}" style="height: 100px; background-color: greenyellow ;" ></img>
+					</div>
+					<div class="media-body">
+						<a th:href="@{/app/}+${app.name}" th:text="${app.displayName == null} ? ${app.name} : ${app.displayName}"></a>
+						<br th:if="${app.description != null}" />
+						<span th:if="${app.description != null}" th:utext="${app.description}"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</section>
+	</div>
+	</div>
+	</div>
 </body>
 </html>

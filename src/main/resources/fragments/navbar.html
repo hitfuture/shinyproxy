@@ -27,11 +27,12 @@
 <head></head>
 <body>
 	<div th:fragment="navbar" th:if="${showNavbar}" id="navbar">
-		<nav class="navbar navbar-inverse navbar-fixed-top">
-			<div class="container-fluid">
+		<nav class="navbar  navbar-static-top" role="navigation">
+			<!-- <div class="container-fluid"> -->
 				<div class="navbar-header">
-					<img class="navbar-brand" th:src="${logo}"></img>
-					<a class="navbar-brand" th:href="@{/}" th:text="${title}"></a>
+				
+					<a class="navbar-brand" th:href="@{/}" th:text="${title}">	
+					<img class="d-inline-block align-top"  th:src="${logo}" height="42" width="42" alt=""  style="background-color:white;"> </img> </a>
 				</div>
 				<div class="navbar-form navbar-right">
 					<a role="button" class="btn btn-primary btn-sm" th:if="${isLoggedIn and @logService.isReportingEnabled()}"
@@ -40,12 +41,13 @@
 					<a role="button" class="btn btn-primary btn-sm" th:href="@{/logout}" th:if="${isLoggedIn}">Sign Out</a>
 				</div>
 				<div class="navbar-right" sec:authorize="isAuthenticated()">
-					<span class="navbar-text">
+					<span class="navbar-text" style="color:white;">
 						<span class="glyphicon glyphicon-user"></span>
-						<span sec:authentication="name"></span>
-					</span>
-				</div>
-			</div>
+						<span sec:authentication="name"></span></span>
+
+						<!-- <span sec:authentication="name"></span> -->
+ 				</div>
+	<!--		</div> -->
 		</nav>
 		<div class="modal fade" id="reportIssueModal" role="dialog">
 			<div class="modal-dialog">
@@ -73,6 +75,6 @@
 		<script lang="JavaScript">
 			$(document).ready(function() { $('input[name="currentLocation"]').val(window.location.href); });
 		</script>
-	</div>
+	 </div> 
 </body>
 </html>

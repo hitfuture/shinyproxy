@@ -26,32 +26,70 @@
 <head lang="en">
 	<title th:text="${title}"></title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<link rel="stylesheet" media="screen" th:href="@{/webjars/bootstrap/3.3.6/css/bootstrap.min.css}"/>
-	<link rel="stylesheet" media="screen" th:href="@{/css/default.css}"/>
-	<script th:src="@{/webjars/jquery/2.2.2/jquery.min.js}"></script>
-	<script th:src="@{/webjars/bootstrap/3.3.6/js/bootstrap.min.js}"></script>
-</head>
-<body>
-	<!-- navigation bar -->
-	<div th:replace="../fragments/navbar :: navbar"></div>
+  <link rel="stylesheet" media="screen" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/> 
 	
+	    <!-- Theme style -->
+    <link rel="stylesheet" href="../dist/css/AdminLTE.min.css"
+          th:href="@{/webjars/AdminLTE/2.4.3/dist/css/AdminLTE.min.css}" />
+    <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css"
+		  th:href="@{/webjars/AdminLTE/2.4.3/dist/css/skins/_all-skins.min.css}" />
+	<link rel="stylesheet" href="../css/font-awesome.min.css"
+		  th:href="@{/webjars/font-awesome/4.7.0/css/font-awesome.css}" /> 
+	<link rel="stylesheet" media="screen" th:href="@{/css/default.css}"/>	
+	<!-- <link rel="stylesheet" href="/webjars/font-awesome/css/font-awesome.min.css"></link> -->
+	<script th:src="@{/webjars/jquery/2.2.2/jquery.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+	<script th:src="@{/webjars/AdminLTE/2.4.3/dist/js/adminlte.min.js}"></script>
+</head>
+<!--<body class="layout-top-nav" th:classappend="${skin}" style="height: auto; min-height: 100%;">  -->
+ <body class="layout-boxed layout-top-nav" th:classappend="${skin}" > 
+
+ <div class ="wrapper" style="height: auto; min-height: 100%;"> 
+	<!-- navigation bar -->
+	<header class="main-header">
+	  <div th:replace="../fragments/navbar :: navbar"></div>
+	</header>
 	<!-- content -->
-	<div th:if="${!displayAppLogos}" class="btn-group btn-group-justified" role="group" aria-label="..." id="applist">
-		<ul>
-			<li th:each="app: ${apps}">
-				<a th:href="@{/app/}+${app.name}" th:text="${app.displayName == null} ? ${app.name} : ${app.displayName}"></a>
-				<br th:if="${app.description != null}" />
-				<span th:if="${app.description != null}" th:utext="${app.description}"></span>
-			</li>
-		</ul>
-	</div>
-    
+	<div class="container">
+	  
+	<div class="content-wrapper container-fluid" style="min-height:600px"> 
+	  
+	<!-- Page Header --> 
+	<section class="content-header">  
+	 <h1>Your Application Navigation! <small>HIT Future is working for you</small></h1>
+	</section>
+	<section class="content">  
+
+		<div th:if="${!displayAppLogos}" class="btn-group btn-group-justified" role="group" aria-label="..." id="applist">
+			<ul>
+				<li th:each="app: ${apps}">
+					<a th:href="@{/app/}+${app.name}" th:text="${app.displayName == null} ? ${app.name} : ${app.displayName}"></a>
+					<br th:if="${app.description != null}" />
+					<span th:if="${app.description != null}" th:utext="${app.description}"></span>
+				</li>
+			</ul>
+		</div>
+		
     <div th:if="${displayAppLogos}" class="btn-group btn-group-justified" role="group" aria-label="..." id="applist">
 		<div class="row" style="margin-top:20px;" th:each="app: ${apps}">
 			<div class="col-md-6 col-md-offset-3">
-				<div class="media">
+			  <div th:id="'bx_'+${app.name}" class="box box-solid box-primary" data-widget="box-widget" >
+					<div class="box-header with-border">
+							<h3 class="box-title"  th:text="${app.displayName == null} ? ${app.name} : ${app.displayName}"> </h3>
+							<div class="box-tools pull-right">
+							  <!-- Buttons, labels, and many other things can be placed here! -->
+							
+							<!--	<a class="btn btn-box-tool" th:href="@{/app/}+${app.name}">
+									<i class="fa fa-play"></i>
+								</a> -->
+							<!--  <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button> -->
+								<button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+
+							</div>
+					</div>
+				<div class="box-body">
 					<div class="media-left">
-						<img th:if="${appLogos.get(app) != null}" th:src="${appLogos.get(app)}"></img>
+						<img th:if="${appLogos.get(app) != null}" th:src="${appLogos.get(app)}" style="height: 100px; background-color: greenyellow ;" /> 
 					</div>
 					<div class="media-body">
 						<a th:href="@{/app/}+${app.name}" th:text="${app.displayName == null} ? ${app.name} : ${app.displayName}"></a>
@@ -59,8 +97,23 @@
 						<span th:if="${app.description != null}" th:utext="${app.description}"></span>
 					</div>
 				</div>
+				</div>
 			</div>
 		</div>
 	</div>
+	<!-- <script th:inline="javascript">
+	 var theApps = [[${apps}]]
+	 $.each(theApps, function( index, value ) {
+         appName = value["name"];
+		 $("#bx_"+appName).activateBox();
+		});
+	 
+	</script>
+-->
+	</section>
+	</div>
+	</div>
+	</div>
+	
 </body>
 </html>
