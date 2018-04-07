@@ -36,10 +36,10 @@
 	<script th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
 </head>
 <!-- <body class="layout-top-nav" th:classappend="${skin}" style="height: auto; min-height: 100%;">  -->
-<body class="layout-boxed" th:classappend="${skin}" > 
+<body class="layout-boxed layout-top-nav" th:classappend="${skin}" style="height: auto; min-height: 100%; background-image: url('../img/background-blue.jpeg');" > 
  <div class ="wrapper" style="height: auto; min-height: 100%;"> 
 <!-- navigation bar -->
-<header class="main-header">
+	<header class="main-header">
 	  <div th:replace="../fragments/navbar :: navbar"></div>
 	</header>
 	
