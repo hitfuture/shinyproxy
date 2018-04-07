@@ -88,7 +88,9 @@ public abstract class BaseController {
 	protected void prepareMap(ModelMap map, HttpServletRequest request) {
 		map.put("title", environment.getProperty("shiny.proxy.title", "ShinyProxy"));
 		map.put("skin", environment.getProperty("shiny.proxy.skin", "skin-blue"));
-		map.put("background-img", resolveImageURI(environment.getProperty("shiny.proxy.background-img", "../img/background-blue.jpeg")));
+		String bgImage = "shiny.proxy.background-img";
+		String bgImageURI = environment.getProperty(bgImage, "../img/background-blue.jpeg");
+		map.put("backgroundImage", resolveImageURI(bgImageURI));
 		map.put("logo", resolveImageURI(environment.getProperty("shiny.proxy.logo-url")));
 		map.put("showNavbar", !Boolean.valueOf(environment.getProperty("shiny.proxy.hide-navbar")));
 		

@@ -41,8 +41,8 @@
 	<script th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
 	<script th:src="@{/webjars/AdminLTE/2.4.3/dist/js/adminlte.min.js}"></script>
 </head>
-<!--  <body class="layout-boxed layout-top-nav" th:classappend="${skin}" th:style="'height: auto; min-height: 100%; background-image: url(' + @{${background-img}} + ');'" > -->
-<body class="layout-boxed layout-top-nav" th:classappend="${skin}" th:style="'height: auto; min-height: 100%; background-image: url(' + '../img/background-blue.jpeg'+ ');'" > 
+<!--  <body class="layout-boxed layout-top-nav" th:classappend="${skin}" th:style="'height: auto; min-height: 100%; background-image: url(' + @{} + ');'" > -->
+<body class="layout-boxed layout-top-nav" th:classappend="${skin}" th:style="'height: auto; min-height: 100%; background-image: url(' + ${backgroundImage} + ');'" > 
  <div class ="wrapper" style="height: auto; min-height: 100%;"> 
 	<!-- navigation bar -->
 	<header class="main-header">
@@ -52,11 +52,19 @@
 	<div class="container">
 	  
 	<div class="content-wrapper container-fluid" style="min-height:600px"> 
-	  
+	 <script th:inline="javascript">
+	 var theApps = [[${apps}]],
+    	mid = Math.ceil(theApps.length/2),
+    appFrame = {
+        left: theApps.slice(0, mid),
+        right: theApps.slice(mid)
+    };
+	</script>
+	
 	<!-- Page Header --> 
 	<section class="content-header">  
 	 <h1>Your Application Navigation! <small>HIT Future is working for you</small></h1>
-	 <!--<div th:text="${background-img}" ></div>-->
+	 
 	</section>
 	<section class="content">  
 
@@ -79,20 +87,18 @@
 							<div class="box-tools pull-right">
 							  <!-- Buttons, labels, and many other things can be placed here! -->
 							
-							<!--	<a class="btn btn-box-tool" th:href="@{/app/}+${app.name}">
-									<i class="fa fa-play"></i>
-								</a> -->
-							<!--  <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button> -->
 								<button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
 
 							</div>
 					</div>
 				<div class="box-body">
 					<div class="media-left">
-						<img th:if="${appLogos.get(app) != null}" th:src="${appLogos.get(app)}" style="height: 100px; background-color: greenyellow ;" /> 
+						<a th:href="@{/app/}+${app.name}">
+									  <img th:if="${appLogos.get(app) != null}" th:src="${appLogos.get(app)}" style="height: 100px; background-color: greenyellow ;" /> 
+						</a>
 					</div>
 					<div class="media-body">
-						<a th:href="@{/app/}+${app.name}" th:text="${app.displayName == null} ? ${app.name} : ${app.displayName}"></a>
+					
 						<br th:if="${app.description != null}" />
 						<span th:if="${app.description != null}" th:utext="${app.description}"></span>
 					</div>
@@ -101,15 +107,8 @@
 			</div>
 		</div>
 	</div>
-	<!-- <script th:inline="javascript">
-	 var theApps = [[${apps}]]
-	 $.each(theApps, function( index, value ) {
-         appName = value["name"];
-		 $("#bx_"+appName).activateBox();
-		});
-	 
-	</script>
--->
+
+
 	</section>
 	</div>
 	</div>
