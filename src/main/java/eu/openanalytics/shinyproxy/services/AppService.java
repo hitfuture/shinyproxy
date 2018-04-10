@@ -76,6 +76,9 @@ public class AppService {
 		public String[] getGroups() {
 			return getArray("groups");
 		}
+		public String getCategory() {
+			return get("category");
+		}
 		
 		//TODO Move docker-related settings out of here
 		

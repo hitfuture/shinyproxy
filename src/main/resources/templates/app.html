@@ -41,11 +41,12 @@
 <!-- navigation bar -->
 	<header class="main-header">
 	  <div th:replace="../fragments/navbar :: navbar"></div>
+	  <div class="loading" style="width:75%;"><div class="loading-txt">Launching <span th:text="${appTitle}"></span>...</div></div>
 	</header>
 	
 	<!-- content -->
+
     <iframe id="shinyframe" th:src="${container}" width="100%"></iframe>
-    <div class="loading"><div class="loading-txt">Launching <span th:text="${appTitle}"></span>...</div></div>
     
 	<script type="text/javascript" th:inline="javascript">
 		function setShinyframeHeight() {
@@ -78,6 +79,9 @@
 			}
 		});
 	</script>
+		<footer class="main-footer">
+			<div th:replace="../fragments/footer :: mainfooter"></div>
+		</footer>
 </div>
 <!--wrapper -->
 </body>

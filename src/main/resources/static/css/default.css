@@ -67,14 +67,16 @@ body {
 	display: none;
 	position: fixed;
 	top: 150px;
-	width: 100%;
+	width: 400px;
 	z-index: 9999;
 	background: url(../img/loading.gif) center no-repeat #fff;
+	background-color: aqua;
 }
 
 .loading-txt {
 	text-align: center;
 	color:white;
+	background-color: blueviolet;
 	font-size: 24px;
 	margin-top: -50px;
 }

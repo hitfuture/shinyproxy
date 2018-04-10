@@ -47,6 +47,7 @@ public class IndexController extends BaseController {
 		map.put("appLogos", appLogos);
 		
 		boolean displayAppLogos = false;
+		boolean categoryMenu = false; /*Add the ability to create a side menu that has a menu of categories and apps */
 		for (ShinyApp app: apps) {
 			if (app.getLogoUrl() != null) {
 				displayAppLogos = true;

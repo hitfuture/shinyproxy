@@ -47,8 +47,8 @@
 	<div class="content-wrapper container-fluid" style="min-height:960px"> 
 	  
 	<!-- Page Header --> 
-	<section class="content-header">  
-	 <h1>Users that are signed in an have sessions <small>HIT Future is working for you</small></h1>
+	<section class="content-header" style="text-align: center;">  
+	 <h1>Users that are signed in and have sessions that are displayed in the Container Activity table </h1>
 	</section>
 		<section class="content">  
 
@@ -62,7 +62,7 @@
     			<th>Target URL</th>
     			<th>Uptime</th>
     		</tr>
-    		<tr th:each="proxy: ${proxies}" style="color:white;">
+    		<tr th:each="proxy: ${proxies}" >
     			<td th:text="${proxy.name}"></td>
     			<td th:text="${proxy.userId}"></td>
     			<td th:text="${proxy.app.name}"></td>
@@ -73,7 +73,10 @@
     </div>
     </section>
     </div>
-    </div>
+	</div>
+	<footer class="main-footer">
+		<div th:replace="../fragments/footer :: mainfooter"></div>
+	</footer>
     </div>
 </body>
 </html>
