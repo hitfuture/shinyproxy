@@ -129,6 +129,17 @@ public class AppService {
 				});
 			return values.toArray(new String[values.size()]);
 		}
+		public String[] getOtherArray(String key) {
+			List<String> values = new ArrayList<>();
+			keySet().stream()
+				.filter(k -> k.startsWith(key))
+				.map(k -> get(k))
+				.forEach(v -> {
+					String[] fields = StringUtils.delimitedListToStringArray(v,";");
+					for (String f: fields) values.add(f.trim());
+				});
+			return values.toArray(new String[values.size()]);
+		}
 		
 		public Map<String,String> getMap(String key) {
 			return keySet().stream()

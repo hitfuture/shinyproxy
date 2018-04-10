@@ -29,11 +29,9 @@
     <div th:fragment="mainfooter" id="mainfooter">
 
         <div class="pull-right hidden-xs">
-            <b>Version</b> 1.1.0
+           <span th:utext="${footerRight}"></span>
         </div>
-        <strong>
-            <a href="https://www.hitfuturenow.com">HIT Future Solutions, LLC. target="_blank"></a>
-        </strong>
+         <span th:utext="${footerLeft}"></span>
     </div>
 </body>
 
