@@ -41,7 +41,7 @@
 </head>
 <!--  <body class="layout-boxed layout-top-nav" th:classappend="${skin}" th:style="'height: auto; min-height: 100%; background-image: url(' + @{} + ');'" > -->
 
-<body class="layout-boxed layout-top-nav" th:classappend="${skin}" th:style="'height: auto; min-height: 100%; background-image: url(' + ${backgroundImage} + ');'">
+<body class=" layout-top-nav" th:classappend="${skin} + ' ' + ${layoutClass}" th:style="'height: auto; min-height: 100%; background-image: url(' + ${backgroundImage} + ');'">
 	<div class="wrapper" style="height: auto; min-height: 100%;">
 		<!-- navigation bar -->
 		<header class="main-header">
